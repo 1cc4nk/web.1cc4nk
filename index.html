@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Background dengan Teks dan Link</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Reset dan dasar */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Video sebagai latar */
+    video.video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.4) saturate(1.2);
+      will-change: transform;
+      transform: scale(1);
+      transition: transform 0.5s ease;
+    }
+    video.video-bg:hover {
+      transform: scale(1.05);
+    }
+    /* Heading utama */
+    h1 {
+      font-family: 'Impact', 'Arial Narrow Bold', sans-serif;
+      text-align: center;
+      margin-top: 80px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      letter-spacing: 0.05em;
+      user-select: none;
+      animation: fadeInUp 1000ms ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+      animation-delay: 0.2s;
+    }
+    /* Animasi fadeInUp */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Container tabel (kotak) */
+    table {
+      margin: 40px auto 48px auto;
+      width: 320px;
+      max-width: 90vw;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 16px;
+      background: rgba(255 255 255 / 0.15);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(255 255 255 / 0.1);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      animation: fadeInUp 800ms ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    /* Penundaan animasi tiap tabel berturut */
+    table:nth-of-type(1) {
+      animation-delay: 0.5s;
+    }
+    table:nth-of-type(2) {
+      animation-delay: 0.7s;
+    }
+
+    /* Sel dan styling */
+    td {
+      padding: 20px 24px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e0f7fa;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      position: relative;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    /* Hover efek untuk seluruh baris */
+    tr:hover {
+      background: rgba(0, 188, 212, 0.2);
+      cursor: pointer;
+      filter: drop-shadow(0 0 5px #00e5ffaa);
+      transition: all 0.3s ease;
+    }
+    /* Link */
+    a {
+      display: inline-block;
+      width: 100%;
+      color: #00e5ff;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.3s ease, transform 0.3s ease;
+      user-select: text;
+    }
+    a:hover,
+    a:focus {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffffcc;
+      transform: scale(1.05);
+      outline: none;
+    }
+    a:focus-visible {
+      outline: 2px solid #00ffffcc;
+      outline-offset: 3px;
+    }
+    /* Efek ikon material di depan link */
+    a::before {
+      content: "open_in_new";
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      vertical-align: middle;
+      margin-right: 6px;
+      color: #00bcd4;
+      transition: color 0.3s ease;
+    }
+    a:hover::before {
+      color: #00ffff;
+    }
+    /* Responsivitas */
+    @media (max-width: 480px) {
+      table {
+        width: 90vw;
+        margin: 32px auto;
+      }
+      td {
+        padding: 16px 16px;
+        font-size: 1rem;
+      }
+      h1 {
+        font-size: 2.4rem;
+        margin-top: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Video sebagai latar belakang -->
+  <video autoplay muted loop class="video-bg" playsinline>
+    <source src="ICHSAN.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <h1>&#128071 HERE WE GO &#128071</h1>
+
+  <table role="presentation" tabindex="0" aria-label="Tautan ke halaman About Me">
+    <tbody>
+      <tr>
+        <td colspan="1">
+          <a href="https://1cc4nk.github.io/sosmed-1cc4nk/" target="_blank" rel="noopener noreferrer" aria-describedby="about-desc">
+            ABOUT ME!
+          </a>
+          <span id="about-desc" class="sr-only">Link membuka halaman About Me di tab baru</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table role="presentation" tabindex="0" aria-label="Tautan ke permainan Tetris">
+    <tbody>
+      <tr>
+        <td colspan="1">
+          <a href="https://1cc4nk.github.io/gaming.1cc4nk/" target="_blank" rel="noopener noreferrer" aria-describedby="tetris-desc">
+            TETRIS
+          </a>
+          <span id="tetris-desc" class="sr-only">Link membuka permainan Tetris di tab baru</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <style>
+    /* Screen reader only text */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</body>
+</html>
+
